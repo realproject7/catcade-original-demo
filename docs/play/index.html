@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#fffdf8">
+<meta name="robots" content="noindex, nofollow">
+<title>Catcade | Original prototype</title>
+<link rel="icon" href="img/icon.png">
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="s" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></g>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M9.6 9.6a2.5 2.5 0 1 1 3.6 2.2c-.8.4-1.2 1-1.2 1.9"/><path d="M12 16.9v.1"/></g></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="10.5" width="13" height="9.5" rx="2.6"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m6 12.5 4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24"><g fill="currentColor"><ellipse cx="12" cy="15.6" rx="4.6" ry="3.8"/><ellipse cx="6.3" cy="11" rx="1.9" ry="2.4"/><ellipse cx="17.7" cy="11" rx="1.9" ry="2.4"/><ellipse cx="9.6" cy="7.3" rx="1.8" ry="2.4"/><ellipse cx="14.4" cy="7.3" rx="1.8" ry="2.4"/></g></symbol>
+    <symbol id="i-club" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 11.2 12 5l7.5 6.2"/><path d="M6.4 10v8.6h11.2V10"/><path d="M10.2 18.6v-4.2h3.6v4.2"/></g></symbol>
+    <symbol id="i-cats" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5.6 5.4 8.9 8a7.2 7.2 0 0 1 6.2 0l3.3-2.6v6.2a6.4 6.4 0 0 1-12.8 0Z"/><path d="M9.6 12.4v.1M14.4 12.4v.1M11 15.2c.6.5 1.4.5 2 0"/></g></symbol>
+    <symbol id="i-me" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.6" width="14" height="15" rx="2.6"/><path d="M8.6 9h6.8M8.6 12.4h6.8M8.6 15.8h3.6"/></g></symbol>
+    <symbol id="i-two" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.4" cy="9" r="2.8"/><circle cx="16.2" cy="10" r="2.3"/><path d="M3.8 18.6a4.8 4.8 0 0 1 9.2 0M14 15.2a4 4 0 0 1 6.2 3.2"/></g></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 10v4h3l4 3.4V6.6L7.8 10Z"/><path d="M15.4 9.4a3.8 3.8 0 0 1 0 5.2M17.8 7a7.2 7.2 0 0 1 0 10"/></g></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 12V6.4a1.5 1.5 0 0 1 3 0V11m0-1.4a1.5 1.5 0 0 1 3 0V11m0-.6a1.5 1.5 0 0 1 3 0v4.2a5.6 5.6 0 0 1-5.6 5.6h-.8a5 5 0 0 1-4.2-2.3l-2.6-4a1.5 1.5 0 0 1 2.4-1.7L8.6 14"/></g></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.8 12h16.4M12 3.6c2.4 2.4 3.4 5.2 3.4 8.4s-1 6-3.4 8.4c-2.4-2.4-3.4-5.2-3.4-8.4S9.600 6 12 3.600Z"/></g></symbol>
+    <symbol id="i-restore" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 1 0 2.2-5.100"/><path d="M5 5.400v3.800h3.800"/></g></symbol>
+    <symbol id="i-lamp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.600v3M6.200 14a5.800 5.800 0 0 1 11.600 0Z"/><path d="M10.400 17.400a1.700 1.700 0 0 0 3.200 0"/></g></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 4.600 2.200 4.600 5 .700-3.600 3.500.9 5-4.500-2.400-4.500 2.400.9-5-3.600-3.500 5-.7Z" fill="none" stroke="currentColor" stroke-width="1.750" stroke-linejoin="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 11v5.400M12 7.600v.1"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- ============ First run ============ -->
+<section class="screen" data-screen="welcome" data-title="1 Welcome">
+  <div class="hero"><div class="room" data-room="welcome"></div></div>
+  <div class="content is-tight">
+    <div class="stack center">
+      <h1 class="t-large" data-ko="캣케이드">Catcade</h1>
+      <p class="t-body prose t-secondary" data-ko="작은 게임들, 고양이 여덟 마리.<br>고양이마다 두는 방식이 달라요.">Small games. Eight cats.<br>Each one plays its own way.</p>
+    </div>
+  </div>
+  <div class="dock">
+    <button class="button" data-go="meet" data-ko="고양이 만나기">Meet the cats</button>
+    <p class="t-footnote t-secondary t-center" data-ko="인터넷 없이 돼요. 광고 없음.">Works offline. No ads.</p>
+  </div>
+</section>
+
+<section class="screen" data-screen="meet" data-title="2 Pick your first cat">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="welcome" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span></span><span></span></header>
+  <div class="content">
+    <div class="stack">
+      <h1 class="t-title-1" data-ko="누구랑 먼저 둘까요?">Who do you play first?</h1>
+      <p class="t-body prose t-secondary" data-ko="셋 다 처음 온 손님에게 친절해요. 나머지 다섯은 안에서 기다려요.">These three are kind to newcomers. Five more are waiting inside.</p>
+    </div>
+    <div class="starters" data-starters></div>
+  </div>
+</section>
+
+<section class="screen" data-screen="lesson" data-title="3 How cats play">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="meet" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-ko="고양이는 이렇게 둬요">How cats play</span><span></span></header>
+  <div class="content">
+    <div class="rule-card">
+      <div class="duo-art"><img src="img/cat-mint-glad.webp" alt=""><img src="img/cat-mint-worried.webp" alt=""></div>
+      <div class="stack-1">
+        <h2 class="t-title-2" data-ko="귀는 거짓말을 안 해요">Ears tell the truth</h2>
+        <p class="t-subhead prose t-secondary" data-ko="귀가 쫑긋 서면 지금 판이 마음에 든다는 뜻. 귀가 납작하면 걱정하는 중이에요.">Ears forward: the cat likes where it stands. Ears flat: it is worried.</p>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="duo-art is-one"><img src="img/cat-mango-windup.webp" alt=""><i class="boop-demo"><b data-ko="톡!">Boop!</b></i></div>
+      <div class="stack-1">
+        <h2 class="t-title-2" data-ko="고양이마다 장난이 하나 있어요">Every cat has one prank</h2>
+        <p class="t-subhead prose t-secondary" data-ko="장난 전에는 꼭 티가 나요. 그때 코를 톡 치면 장난을 못 쳐요. 장난은 잠깐 방해할 뿐, 내 것을 빼앗지는 않아요.">You always see it coming. Boop the nose and the prank is off. A prank gets in your way for a moment. It never takes anything from you.</p>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="duo-art is-one"><img src="img/cat-tofu-slip.webp" alt=""></div>
+      <div class="stack-1">
+        <h2 class="t-title-2" data-ko="고양이마다 약점이 하나 있어요">Every cat has a weak spot</h2>
+        <p class="t-subhead prose t-secondary" data-ko="두부는 오래 기다리면 잠들어요. 약점을 찾으면 그 고양이를 이기는 법을 아는 거예요.">Tofu falls asleep if you take your time. Find a cat's weak spot and you know how to beat it.</p>
+      </div>
+    </div>
+  </div>
+  <div class="dock"><button class="button" data-go="intro" data-lesson-first data-ko="첫 판 시작">Play the first game</button><button class="button is-quiet" data-go="back" data-fallback="club" data-lesson-back hidden data-ko="돌아가기">Back</button></div>
+</section>
+
+<!-- ============ Club (home) ============ -->
+<section class="screen has-tabs" data-screen="club" data-title="4 Club">
+  <div class="content is-flush">
+    <div class="room-wrap"><div class="room" data-room="club"></div><h1 class="t-title-1 room-title" data-ko="클럽하우스">Clubhouse</h1></div>
+    <div class="pad stack-4">
+      <button class="card is-invite" data-invite data-go="intro"></button>
+      <div class="head"><h2 class="t-title-2 grow" data-ko="게임">Games</h2><span class="t-footnote t-secondary" data-ko="어떤 고양이와도 둘 수 있어요">Any game, any cat</span></div>
+      <div class="games" data-games></div>
+      <button class="proto-link" data-do="plus-toggle" data-mock-plus></button>
+    </div>
+  </div>
+  <nav class="tabbar" data-tabs="club"></nav>
+</section>
+
+<section class="screen" data-screen="game" data-title="5 Game page">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="club" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-g-name></span><button class="icon-button" data-go="lesson" aria-label="How cats play"><svg viewBox="0 0 24 24"><use href="#i-help"/></svg></button></header>
+  <div class="content" data-game-body></div>
+  <div class="dock" data-game-dock></div>
+</section>
+
+<section class="screen" data-screen="game-locked" data-title="6 Game page, not opened">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="club" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-g-name></span><button class="icon-button" data-go="lesson" aria-label="How cats play"><svg viewBox="0 0 24 24"><use href="#i-help"/></svg></button></header>
+  <div class="content" data-game-body></div>
+  <div class="dock" data-game-dock></div>
+</section>
+
+<section class="screen" data-screen="intro" data-title="7 Match intro">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="club" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-i-game></span><span></span></header>
+  <div class="content" data-intro-body></div>
+  <div class="dock"><button class="button" data-go="match" data-ko="시작">Start</button></div>
+</section>
+
+<!-- ============ The match frame, shared by every game ============ -->
+<section class="screen is-match" data-screen="match" data-title="8 Match (playable)">
+  <header class="m-bar">
+    <button class="icon-button" data-go="pause" aria-label="Pause"><svg viewBox="0 0 24 24"><use href="#i-pause"/></svg></button>
+    <span class="t-headline" data-m-title></span>
+    <button class="icon-button" data-m-lamp aria-label="Lamp" hidden><svg viewBox="0 0 24 24"><use href="#i-lamp"/></svg></button>
+    <p class="bubble" data-m-say hidden></p>
+  </header>
+  <div class="m-band" data-m-band>
+    <div class="m-side"><b class="m-num t-num" data-m-cs>0</b><span class="t-footnote t-strong" data-m-cname></span><span class="paws" data-m-paws></span></div>
+    <button class="m-face" data-m-face data-check-skip aria-label="Cat"><span class="m-boop" data-m-boop hidden><b data-ko="톡!">Boop!</b></span></button>
+    <div class="m-side"><b class="m-num t-num" data-m-ys>0</b><span class="t-footnote t-strong" data-ko="나">You</span><button class="m-ball" data-m-ball aria-label="Roll the ball" hidden></button></div>
+    <div class="m-extra" data-m-extra></div>
+  </div>
+  <div class="m-table" data-m-table></div>
+  <footer class="m-foot"><p class="t-subhead prose grow" data-m-status aria-live="polite"></p><div class="m-controls" data-m-controls></div></footer>
+  <div class="m-dark" data-m-dark hidden></div>
+  <div class="m-result" data-m-result hidden>
+    <div class="sheet" data-result-card>
+      <img class="r-cat" data-r-img alt="">
+      <h2 class="t-title-1" data-r-title></h2>
+      <p class="t-headline r-score t-num" data-r-score></p>
+      <p class="t-body prose r-say" data-r-say></p>
+      <div class="chip is-butter r-stamp" data-r-stamp><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><span data-r-stamp-text></span></div>
+      <ul class="r-lines" data-r-lines></ul>
+      <div class="stack">
+        <button class="button" data-do="rematch" data-ko="한 판 더">Rematch</button>
+        <button class="button is-quiet" data-go="game" data-ko="다른 고양이">Another cat</button>
+        <button class="button is-plain" data-go="club" data-ko="클럽하우스로">Back to the club</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-screen="play-pairnap" data-title="8a Play: Pair Nap vs Tofu"></section>
+<section class="screen" data-screen="play-basket" data-title="8b Play: Basket Duel vs Mango"></section>
+<section class="screen" data-screen="play-climb" data-title="8c Play: Cushion Climb vs Mint"></section>
+<section class="screen" data-screen="play-pawdrop" data-title="8d Play: Paw Drop vs Plum"></section>
+<section class="screen" data-screen="play-boxes" data-title="8e New: Box Fort vs Ollie"></section>
+<section class="screen" data-screen="play-teeter" data-title="8f New: Teeter Table vs Button"></section>
+
+<section class="screen is-sheet-screen" data-screen="result-win" data-title="9 Result: you win"><div class="m-result is-static"><div class="sheet" data-result-sample="win"></div></div></section>
+<section class="screen is-sheet-screen" data-screen="result-lose" data-title="10 Result: the cat wins"><div class="m-result is-static"><div class="sheet" data-result-sample="lose"></div></div></section>
+
+<section class="screen is-sheet-screen" data-screen="pause" data-title="11 Pause">
+  <div class="m-result is-static"><div class="sheet">
+    <img class="r-cat" src="img/cat-tofu-think.webp" alt="" data-pause-img>
+    <h2 class="t-title-1" data-ko="잠깐 쉬는 중">Paused</h2>
+    <p class="t-body prose t-secondary" data-ko="고양이가 기다려 줘요. 판은 그대로 있어요.">The cat will wait. The table stays as it is.</p>
+    <div class="stack">
+      <button class="button" data-go="back" data-fallback="match" data-ko="계속하기">Keep playing</button>
+      <button class="button is-quiet" data-go="lesson" data-ko="고양이는 이렇게 둬요">How cats play</button>
+      <button class="button is-plain" data-go="club" data-ko="판 그만두기">Leave the table</button>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ Four games designed for the first version, shown mid-match. Not playable in this mock. ============ -->
+<section class="screen is-match is-still" data-screen="m-billiards" data-title="12 Catnip Billiards vs Sumi (designed)" style="--cat-tint:#e6e3ea;--cat-edge:#b9b3c4">
+  <header class="m-bar"><button class="icon-button" data-go="back" data-fallback="club" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-ko="캣닢 당구">Catnip Billiards</span><button class="icon-button" data-note="Mock: tapping the lamp switches the light back on." data-ko-note="시안: 전등을 누르면 불이 다시 켜져요." aria-label="Lamp"><svg viewBox="0 0 24 24"><use href="#i-lamp"/></svg></button></header>
+  <div class="m-band">
+    <div class="m-side"><b class="m-num t-num">2</b><span class="t-footnote t-strong" data-ko="수미">Sumi</span><span class="paws"><i class="is-used"></i><i></i></span></div>
+    <div class="m-face"><img src="img/cat-sumi-smug.webp" alt=""></div>
+    <div class="m-side"><b class="m-num t-num">3</b><span class="t-footnote t-strong" data-ko="나">You</span></div>
+  </div>
+  <div class="m-table is-plain">
+    <div class="bl-table">
+      <i class="pocket p1"></i><i class="pocket p2"></i><i class="pocket p3"></i><i class="pocket p4"></i><i class="pocket p5"></i><i class="pocket p6"></i>
+      <i class="bl-ball is-rose" style="left:30%;top:24%"></i><i class="bl-ball is-blue" style="left:62%;top:18%"></i><i class="bl-ball is-blue" style="left:74%;top:44%"></i><i class="bl-ball is-black" style="left:48%;top:38%"></i><i class="bl-ball is-rose" style="left:22%;top:56%"></i>
+      <i class="bl-ball is-white" style="left:54%;top:72%"></i><i class="bl-aim"></i>
+      <i class="bl-dark"></i>
+    </div>
+  </div>
+  <footer class="m-foot"><p class="t-subhead prose grow" data-ko="불 끄기: 내 손가락 주변만 보여요. 전등을 누르면 다시 켜져요. 불이 켜지면 나방이 오고, 수미는 나방을 쫓느라 서둘러요.">Lights Out: you see only a circle round your finger. Tap the lamp to switch it back on. When it comes on a moth comes too, and Sumi rushes her shot.</p></footer>
+  <p class="still-note t-footnote prose" data-ko="첫 버전에 들어갈 게임의 설계 화면이에요. 이 시안에서는 플레이되지 않아요.">Designed for the first version. Not playable in this mock.</p>
+</section>
+
+<section class="screen is-match is-still" data-screen="m-spades" data-title="13 Fireside Spades with Plum (designed)" style="--cat-tint:#ebe3f3;--cat-edge:#c3b0d8">
+  <header class="m-bar"><button class="icon-button" data-go="back" data-fallback="club" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-ko="난롯가 스페이드">Fireside Spades</span><span></span></header>
+  <div class="m-band">
+    <div class="m-side"><b class="m-num t-num">3</b><span class="t-footnote t-strong" data-ko="상대 팀">Rivals</span><span class="paws"><i class="is-used"></i><i></i><i></i></span></div>
+    <div class="m-face"><img src="img/cat-plum-glad.webp" alt=""></div>
+    <div class="m-side"><b class="m-num t-num">4</b><span class="t-footnote t-strong" data-ko="나와 자두">You + Plum</span></div>
+  </div>
+  <div class="m-table is-felt">
+    <div class="sp-seat is-left"><img src="img/cat-button-prank.webp" alt=""><span class="t-footnote t-strong" data-ko="단추 · 4판 부름">Button · bid 4</span></div>
+    <div class="sp-seat is-right"><img src="img/cat-mango-idle.webp" alt=""><span class="t-footnote t-strong" data-ko="망고 · 5판 부름">Mango · bid 5</span></div>
+    <div class="sp-trick"><i class="pc is-red" style="--r:-8deg"><b>♥</b><em>9</em></i><i class="pc" style="--r:6deg"><b>♠</b><em>4</em></i><i class="pc is-red" style="--r:-2deg"><b>♥</b><em>Q</em></i></div>
+    <p class="sp-note t-footnote t-strong" data-ko="자두의 귀가 섰어요: 하트가 세요">Plum's ears are up: she is strong in hearts</p>
+    <div class="sp-hand"><i class="pc"><b>♠</b><em>A</em></i><i class="pc"><b>♠</b><em>7</em></i><i class="pc is-red"><b>♥</b><em>K</em></i><i class="pc is-red is-pick"><b>♥</b><em>3</em></i><i class="pc is-red"><b>♦</b><em>J</em></i><i class="pc is-red"><b>♦</b><em>5</em></i><i class="pc"><b>♣</b><em>10</em></i><i class="pc"><b>♣</b><em>8</em></i><i class="pc"><b>♣</b><em>6</em></i><i class="pc"><b>♣</b><em>2</em></i></div>
+  </div>
+  <footer class="m-foot"><p class="t-subhead prose grow" data-ko="똑딱똑딱: 단추가 판을 두드리며 재촉해요. 시간이 지나도 잃는 건 없어요. 같은 편 고양이는 나한테 장난치지 않아요.">Tap-tap: Button drums the table to hurry you. Nothing is lost if the clock runs out. Your partner cat never pranks you.</p><div class="m-controls"><div class="m-clock is-still"><i></i><b>4</b></div></div></footer>
+  <p class="still-note t-footnote prose" data-ko="첫 버전에 들어갈 게임의 설계 화면이에요. 이 시안에서는 플레이되지 않아요.">Designed for the first version. Not playable in this mock.</p>
+</section>
+
+<section class="screen is-match is-still" data-screen="m-flip" data-title="14 Tuxedo Flip vs Ollie (designed)" style="--cat-tint:#dcecf8;--cat-edge:#a9cbe6">
+  <header class="m-bar"><button class="icon-button" data-go="back" data-fallback="club" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-ko="턱시도 뒤집기">Tuxedo Flip</span><span></span></header>
+  <div class="m-band">
+    <div class="m-side"><b class="m-num t-num">9</b><span class="t-footnote t-strong" data-ko="올리">Ollie</span><span class="paws"><i class="is-used"></i><i></i></span></div>
+    <div class="m-face"><img src="img/cat-ollie-prank.webp" alt=""></div>
+    <div class="m-side"><b class="m-num t-num">11</b><span class="t-footnote t-strong" data-ko="나">You</span></div>
+  </div>
+  <div class="m-table is-plain"><div class="fl-board" data-flip></div></div>
+  <footer class="m-foot"><p class="t-subhead prose grow" data-ko="빤히 보기: 이번 차례엔 둘 수 있는 자리 표시가 사라져요. 올리 얼굴 앞에 손가락을 잠깐 대고 있으면 하던 생각을 잊어요.">Stare: the dots that show where you can play are gone for this turn. Hold a finger in front of Ollie's face and he loses his place.</p></footer>
+  <p class="still-note t-footnote prose" data-ko="첫 버전에 들어갈 게임의 설계 화면이에요. 이 시안에서는 플레이되지 않아요.">Designed for the first version. Not playable in this mock.</p>
+</section>
+
+<section class="screen is-match is-still" data-screen="m-hockey" data-title="15 Paw Hockey vs Mango (designed)" style="--cat-tint:#fde3cc;--cat-edge:#f0b98d">
+  <header class="m-bar"><button class="icon-button" data-go="back" data-fallback="club" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-ko="앞발 하키">Paw Hockey</span><span></span></header>
+  <div class="m-band">
+    <div class="m-side"><b class="m-num t-num">3</b><span class="t-footnote t-strong" data-ko="망고">Mango</span><span class="paws"><i class="is-used"></i><i></i></span></div>
+    <div class="m-face"><img src="img/cat-mango-windup.webp" alt=""><span class="m-boop"><b data-ko="톡!">Boop!</b></span></div>
+    <div class="m-side"><b class="m-num t-num">2</b><span class="t-footnote t-strong" data-ko="나">You</span></div>
+  </div>
+  <div class="m-table is-plain">
+    <div class="hk-rink"><i class="hk-goal is-top"></i><i class="hk-goal is-bottom"></i><i class="hk-mid"></i><img class="hk-paw" src="img/paw-mango.webp" alt=""><i class="hk-puck"></i><i class="hk-mallet"></i></div>
+  </div>
+  <footer class="m-foot"><p class="t-subhead prose grow" data-ko="망고가 엉덩이를 씰룩여요. 두 배 빠른 덮치기 슛이 와요. 코를 톡 치면 멈춰요.">Mango wiggles. A pounce shot at double speed is coming. Boop the nose to stop it.</p></footer>
+  <p class="still-note t-footnote prose" data-ko="첫 버전에 들어갈 게임의 설계 화면이에요. 이 시안에서는 플레이되지 않아요.">Designed for the first version. Not playable in this mock.</p>
+</section>
+
+<!-- ============ Cats ============ -->
+<section class="screen has-tabs" data-screen="cats" data-title="16 Cats">
+  <div class="content">
+    <div class="stack">
+      <h1 class="t-large" data-ko="고양이들">Cats</h1>
+      <p class="t-body prose t-secondary" data-ko="같은 게임도 누구와 두느냐에 따라 달라요.">The same game is a different game with each of them.</p>
+    </div>
+    <div class="roster" data-roster></div>
+  </div>
+  <nav class="tabbar" data-tabs="cats"></nav>
+</section>
+
+<section class="screen" data-screen="cat" data-title="17 Cat page: Tofu, known well">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="cats" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span></span><span></span></header>
+  <div class="content" data-cat-body></div>
+  <div class="dock" data-cat-dock></div>
+</section>
+<section class="screen" data-screen="cat-new" data-title="18 Cat page: Jelly, not played yet">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="cats" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span></span><span></span></header>
+  <div class="content" data-cat-body></div>
+  <div class="dock" data-cat-dock></div>
+</section>
+<section class="screen" data-screen="cat-locked" data-title="19 Cat page: Plum, not opened">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="cats" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span></span><span></span></header>
+  <div class="content" data-cat-body></div>
+  <div class="dock" data-cat-dock></div>
+</section>
+
+<!-- ============ Me ============ -->
+<section class="screen has-tabs" data-screen="me" data-title="20 Stamp book">
+  <div class="content">
+    <div class="stack">
+      <h1 class="t-large" data-ko="도장첩">Stamp book</h1>
+      <p class="t-body prose t-secondary" data-ko="고양이 한 마리를 게임 하나에서 이기면 도장 하나.">Beat a cat at a game and you get that stamp.</p>
+    </div>
+    <div class="card" data-stamps></div>
+    <div class="stack">
+      <div class="head"><h2 class="t-title-2 grow" data-ko="기념품 선반">Keepsake shelf</h2><span class="t-footnote t-secondary" data-keep-count></span></div>
+      <p class="t-subhead prose t-secondary" data-ko="한 고양이를 다섯 번 이기면 그 고양이가 아끼는 물건을 줘요.">Beat a cat five times and it gives you the thing it loves.</p>
+      <div class="shelf" data-shelf></div>
+    </div>
+    <div class="list">
+      <button class="row" data-go="two"><svg viewBox="0 0 24 24"><use href="#i-two"/></svg><span class="grow t-body" data-ko="둘이서 한 폰으로">Two people, one phone</span><svg viewBox="0 0 24 24"><use href="#i-next"/></svg></button>
+      <button class="row" data-go="plus"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><span class="grow t-body" data-ko="클럽하우스 전체 열기">Open the whole clubhouse</span><span class="value t-body" data-plus-state></span><svg viewBox="0 0 24 24"><use href="#i-next"/></svg></button>
+      <button class="row" data-go="settings"><svg viewBox="0 0 24 24"><use href="#i-info"/></svg><span class="grow t-body" data-ko="설정">Settings</span><svg viewBox="0 0 24 24"><use href="#i-next"/></svg></button>
+    </div>
+  </div>
+  <nav class="tabbar" data-tabs="me"></nav>
+</section>
+
+<section class="screen has-tabs" data-screen="me-new" data-title="20a Stamp book, first day">
+  <div class="content">
+    <div class="stack">
+      <h1 class="t-large" data-ko="도장첩">Stamp book</h1>
+      <p class="t-body prose t-secondary" data-ko="고양이 한 마리를 게임 하나에서 이기면 도장 하나.">Beat a cat at a game and you get that stamp.</p>
+    </div>
+    <div class="card" data-stamps></div>
+    <div class="stack">
+      <div class="head"><h2 class="t-title-2 grow" data-ko="기념품 선반">Keepsake shelf</h2><span class="t-footnote t-secondary" data-keep-count></span></div>
+      <p class="t-subhead prose t-secondary" data-ko="한 고양이를 다섯 번 이기면 그 고양이가 아끼는 물건을 줘요.">Beat a cat five times and it gives you the thing it loves.</p>
+      <div class="shelf" data-shelf></div>
+    </div>
+    <div class="list">
+      <button class="row" data-go="two"><svg viewBox="0 0 24 24"><use href="#i-two"/></svg><span class="grow t-body" data-ko="둘이서 한 폰으로">Two people, one phone</span><svg viewBox="0 0 24 24"><use href="#i-next"/></svg></button>
+      <button class="row" data-go="plus"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><span class="grow t-body" data-ko="클럽하우스 전체 열기">Open the whole clubhouse</span><span class="value t-body" data-plus-state></span><svg viewBox="0 0 24 24"><use href="#i-next"/></svg></button>
+      <button class="row" data-go="settings"><svg viewBox="0 0 24 24"><use href="#i-info"/></svg><span class="grow t-body" data-ko="설정">Settings</span><svg viewBox="0 0 24 24"><use href="#i-next"/></svg></button>
+    </div>
+  </div>
+  <nav class="tabbar" data-tabs="me"></nav>
+</section>
+
+<section class="screen" data-screen="two" data-title="21 Two people, one phone">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="me" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-ko="둘이서 한 폰으로">Two people, one phone</span><span></span></header>
+  <div class="content">
+    <div class="card is-sky"><div class="card-row"><img class="art-88" src="img/cat-button-prank.webp" alt=""><div class="grow stack-1"><h2 class="t-title-2" data-ko="고양이는 심판 겸 훼방꾼">The cat referees and heckles</h2><p class="t-subhead prose" data-ko="고양이는 앞서는 사람에게만 장난쳐요. 그래서 끝까지 팽팽해요.">The cat pranks whoever is ahead, so the game stays close to the end.</p></div></div></div>
+    <div class="stack"><h2 class="label" data-ko="게임">Game</h2><div class="chips" data-two-games></div></div>
+    <div class="stack"><h2 class="label" data-ko="지켜볼 고양이">The cat that watches</h2><div class="pick-row" data-two-cats></div></div>
+    <p class="t-footnote prose t-secondary" data-ko="폰을 둘 사이에 놓고 번갈아 두거나 양쪽 끝을 하나씩 잡아요. 난롯가 스페이드는 손패를 숨겨야 해서 둘이서는 못 해요.">Put the phone between you and take turns, or hold one end each. Fireside Spades needs hidden hands, so it is not for two.</p>
+  </div>
+  <div class="dock"><button class="button" data-note="Mock: two people play is designed here but not playable in this mock." data-ko-note="시안: 둘이서 하기는 설계만 있고 이 시안에서는 플레이되지 않아요." data-ko="시작">Start</button></div>
+</section>
+
+<section class="screen" data-screen="plus" data-title="22 Open the whole clubhouse">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="me" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span></span><span></span></header>
+  <div class="content">
+    <div class="stack center">
+      <div class="lineup" data-lineup="locked"></div>
+      <h1 class="t-title-1" data-ko="클럽하우스 전체 열기">Open the whole clubhouse</h1>
+      <p class="t-body prose t-secondary" data-ko="한 번 결제하면 끝. 구독도 광고도 없어요.">One payment. No subscription, no ads.</p>
+    </div>
+    <div class="card is-butter">
+      <ul class="ticks">
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg><span class="t-body prose" data-ko="고양이 다섯 마리 더: 젤리, 올리, 단추, 수미, 자두">Five more cats: Jelly, Ollie, Button, Sumi, Plum</span></li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg><span class="t-body prose" data-ko="게임 다섯 개 더: 방석 타워, 캣닢 당구, 난롯가 스페이드, 턱시도 뒤집기, 앞발 하키">Five more games: Cushion Climb, Catnip Billiards, Fireside Spades, Tuxedo Flip, Paw Hockey</span></li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg><span class="t-body prose" data-ko="앞으로 추가되는 고양이와 게임도 전부">Every cat and game added later</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2 class="t-headline" data-ko="무료로 계속 되는 것">Free for good</h2>
+      <p class="t-subhead prose t-secondary" data-ko="두부, 민트, 망고와 바구니 대결, 짝꿍 낮잠, 발도장 네 줄. 둘이서 하기와 도장첩도 무료예요.">Tofu, Mint and Mango at Basket Duel, Pair Nap and Paw Drop. Two people play and the stamp book are free too.</p>
+    </div>
+  </div>
+  <div class="dock">
+    <button class="button is-butter" data-do="plus-on" data-go="plus-open"><span data-ko="전부 열기">Open everything</span><span class="t-num" data-price>$4.99</span></button>
+    <button class="button is-plain" data-note="Mock: this restores an earlier purchase from the App Store." data-ko-note="시안: 예전에 결제한 내역을 앱스토어에서 다시 가져와요." data-ko="구매 복원">Restore purchase</button>
+  </div>
+</section>
+
+<section class="screen" data-screen="plus-open" data-title="23 The clubhouse is open">
+  <div class="content is-spread">
+    <div class="center is-fill stack-4">
+      <div class="lineup is-in" data-lineup="all"></div>
+      <h1 class="t-title-1" data-ko="모두 들어왔어요">Everyone is in</h1>
+      <p class="t-body prose t-secondary" data-ko="고양이 여덟 마리, 게임 열 개. 도장 여든 개가 기다려요.">Eight cats, ten games. Eighty stamps to earn.</p>
+    </div>
+  </div>
+  <div class="dock"><button class="button" data-go="cats" data-ko="새 고양이 만나기">Meet the new cats</button></div>
+</section>
+
+<section class="screen" data-screen="settings" data-title="24 Settings">
+  <header class="navbar"><button class="icon-button" data-go="back" data-fallback="me" aria-label="Back"><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button><span class="t-headline" data-ko="설정">Settings</span><span></span></header>
+  <div class="content">
+    <div class="list">
+      <div class="row"><svg viewBox="0 0 24 24"><use href="#i-sound"/></svg><span class="grow t-body" data-ko="소리">Sound</span><button class="switch" role="switch" aria-checked="true" aria-label="Sound" data-sound-switch><i></i></button></div>
+      <div class="row"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg><span class="grow t-body" data-ko="진동">Haptics</span><button class="switch" role="switch" aria-checked="true" aria-label="Haptics"><i></i></button></div>
+      <div class="row"><svg viewBox="0 0 24 24"><use href="#i-hand"/></svg><span class="grow"><span class="t-body" data-ko="왼손잡이">Left-handed</span><br><span class="t-footnote prose t-secondary" data-ko="나란히 두는 게임에서 내 쪽을 왼쪽으로">My side on the left in side by side games</span></span><button class="switch" role="switch" aria-checked="false" aria-label="Left-handed"><i></i></button></div>
+    </div>
+    <div class="list">
+      <button class="row" data-note="Mock: opens the language choice. English, Korean and Japanese are planned." data-ko-note="시안: 언어 선택이 열려요. 영어, 한국어, 일본어를 계획하고 있어요."><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg><span class="grow t-body" data-ko="언어">Language</span><span class="value t-body" data-ko="한국어">English</span><svg viewBox="0 0 24 24"><use href="#i-next"/></svg></button>
+      <button class="row" data-note="Mock: this restores an earlier purchase from the App Store." data-ko-note="시안: 예전에 결제한 내역을 앱스토어에서 다시 가져와요."><svg viewBox="0 0 24 24"><use href="#i-restore"/></svg><span class="grow t-body" data-ko="구매 복원">Restore purchase</span><svg viewBox="0 0 24 24"><use href="#i-next"/></svg></button>
+      <button class="row" data-go="lesson"><svg viewBox="0 0 24 24"><use href="#i-help"/></svg><span class="grow t-body" data-ko="고양이는 이렇게 둬요">How cats play</span><svg viewBox="0 0 24 24"><use href="#i-next"/></svg></button>
+    </div>
+    <p class="t-footnote prose t-secondary" data-ko="기록은 이 아이폰에만 저장돼요. 계정도 서버도 없어요.">Your records stay on this iPhone. There is no account and no server.</p>
+  </div>
+</section>
+
+<script src="sound.js"></script>
+<script src="cats.js"></script>
+<script src="room.js"></script>
+<script src="match.js"></script>
+<script src="g-pairnap.js"></script>
+<script src="g-pawdrop.js"></script>
+<script src="g-basket.js"></script>
+<script src="g-climb.js"></script>
+<script src="vendor/matter.min.js"></script>
+<script src="g-boxes.js"></script>
+<script src="g-teeter.js"></script>
+<script src="app.js"></script>
+<script src="proto.js"></script>
+</body>
+</html>
